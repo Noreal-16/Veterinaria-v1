@@ -1,0 +1,56 @@
+<section class="site-section bg-light block-13" id="testimonials-section" data-aos="fade">
+    <div class="container">
+
+        <div class="card">
+            <div class="card-header bg-succses">
+                HISTORIAL CITAS MEDICAS
+            </div>
+
+            <div class="card-body">
+            </div>
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table id="tablaLCitaV" class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Nro</th>
+                                <th>Nro Historial</th>
+                                <th>Cliente</th>
+                                <th>Mascota</th>
+                                <th>Edad</th>
+                                <th>Servicio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% lista.forEach(function(item, index){%>
+                                <tr>
+                                    <td>
+                                        <%= (index + 1)%>
+                                    </td>
+                                    <td>
+                                        <%= item.nro_historia%>
+                                    </td>
+                                    <td>
+                                        <%= item.persona.nombre%>
+                                    </td>
+                                    <td>
+                                        <%= item.nombre%>
+                                    </td>
+                                    <td>
+                                        <%= item.edad%>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="/historialMascota/<%=item.external_id%>/<%=item.persona.external_id%>" data-tooltip="tooltip" data-placement="top" title="Registro Historial" class="btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <%})%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

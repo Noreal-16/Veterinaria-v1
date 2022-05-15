@@ -1,0 +1,64 @@
+<section class="site-section bg-light block-13" id="testimonials-section" data-aos="fade">
+    <div class="container">
+
+        <div class="card">
+            <div class="card-header bg-succses">
+                LISTADO CLIENTES
+            </div>
+
+            <div class="card-body">
+            </div>
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table id="tablaLCitaV" class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Nro</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% listaP.forEach(function(item, index){%>
+                                <tr>
+                                    <td>
+                                        <%= (index + 1)%>
+                                    </td>
+                                    <td>
+                                        <%= item.nombre%>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <form name="eliminarHistorialM" action="" method="POST">
+                                            <input type="hidden" value="" id="externalDelete" name="externalDelete">
+                                            <div class="btn-group">
+                                                <a href="#" data-toggle="modal" data-target="#modalActualizaHist" data-tooltip="tooltip" data-placement="top" title="Editar" class=" btn-info btn-sm" onclick="llenaDatosHistorial('')">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                                <path fill-rule="evenodd" d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+                                            </svg>
+                                                    <i class="far fa-edit"></i></a>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button type="submit" class="btn btn-sm bg-danger ">
+                                            <i class="fa fa-trash "></i>
+                                        </button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <a href="" data-tooltip="tooltip" data-placement="top" title="Registrar Mascota" class="btn-warning btn-sm">Mascotas</i></a>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <%})%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

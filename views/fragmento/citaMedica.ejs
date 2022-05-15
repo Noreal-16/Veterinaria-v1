@@ -1,0 +1,161 @@
+<script>
+    $(document).ready(function() {
+        $("#horass").hide();
+        $("#fechass").hide();
+
+        var a = recorrerSelect(document.getElementById("horass"));
+        var b = recorrerSelect(document.getElementById("horario"));
+        console.log(a);
+        console.log(b);
+        var c = recorrerSelect(document.getElementById("fechass"));
+        console.log(c);
+
+        $("#horario").change(function() {
+            var verFecha = $("#fecha").val();
+            var horas = $("#horario").val();
+            contieneValor(c, verFecha);
+            if (contieneValor(c, verFecha) == verFecha && contieneValor(a, horas) == horas) {
+                alert("Hora ya contiene cita, seleccione otra hora")
+                $("select option[value='" + horas + "']").prop("disabled", true);
+            }
+        });
+
+        $("#fecha").change(function() {
+            var f = $("#fecha").val();
+            console.log("fecha selecionada:" + f);
+            contieneValor(c, f);
+        });
+
+        fechaActual();
+        selectColor();
+        fechasPasadas();
+        nuevaFecha();
+        $("#fecha").change(function() {
+            selectColor();
+        });
+
+        function nuevaFecha() {
+            if (!obtenerHora()) {
+                console.log("logica");
+                if (fechaActual() == fechaActual()) {
+                    fechaSiguiente($("#fecha").val());
+                }
+            }
+        }
+        $("#genCit").click(function() {
+            $("#valor").val("true")
+        });
+    });
+    llenaDatosCombo();
+    $("#servicios").click(function() {
+        alert($(this).attr("id"));
+    })
+</script>
+<section class="site-section bg-white " id="testimonials-section" data-aos="fade">
+    <div class="container">
+
+        <h1 class="text-center">
+            <%title%>
+        </h1>
+        <div class="row">
+
+            <div class="card align-self-center" style="width:300px">
+                <div class="card-header btn-succses">
+                    <div class="card-title text-center">
+                        <p class="card-text">
+                            <h4>Datos Cliente</h4><input type="hidden" value="" id="idCliente" name="idCliente" />
+                        </p>
+                        <select id="horass">
+                            <%cita.forEach(function(item, index){%>
+                            <option value="<%= cita.hora%>"><%= cita.hora%></option>
+                            <%})%>
+                        </select>
+                        <select id="fechass">
+                            <%cita.forEach(function(item, index){%>
+                                <option value="<%= cita.fecha%>"><%= cita.fecha%></option>
+                                <%})%>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" class="form-control" value="<%= cliente.nombre%>" name="nombreCliente" readonly>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="direccion">Direccion:</label>
+                        <input type="text" class="form-control" value="" readonly>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="col-md-1"> </div>
+            <div class="card" style="width:700px">
+                <div class="card-header btn-succses">
+                    <div class="card-title text-center">
+                        <div class="card-header bg-light">
+                            <h5>DATOS CITA MEDICA</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <form action="/guardaCita" method="POST" class="form-box" id="formulario">
+                            <label class="text-black">Seleccione su mascota</label>
+                            <select class="form-control" id="mascota" name="mascota">
+                                <% mascota.forEach(function(item, index){ %>
+                                    <option value="<%= item.external_id %>"><%= item.nombre%></option>
+                                    <%})%>
+                            </select>
+                            <label class="text-black" for="exampleFormControlSelect2">Seleccione el servicio</label>
+                            <div class="form-group">
+                                <select class="form-control" name="servicios" id="servicios">
+                                </select>
+                            </div>
+
+                            <label class="text-black" for="fecha">Seleccione la fecha</label>
+
+                            <div class="form-group">
+                                <input type="date" id="fecha" name="fecha" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-black" for="exampleFormControlSelect2">Seleccione hora</label>
+
+                                <select multiple class="form-control text-black dropdown-secondary" name="hora" id="horario" size="8">
+                                    <option value="8:00-8:30" id="h1">8:00-8:30</option>
+                                    <option value="8:30-9:00" id="h2">8:30-9:00</option>
+                                    <option value="9:00-9:30" id="h3">9:00-9:30</option>
+                                    <option value="9:30-10:00" id="h4">9:30-10:00</option>
+                                    <option value="10:00-10:30" id="h5">10:00-10:30</option>
+                                    <option value="10:30-11:00" id="h6">10:30-11:00</option>
+                                    <option value="11:00-11:30" id="h7">11:00-11:30</option>
+                                    <option value="11:30-12:00" id="h8">11:30-12:00</option>
+                                    <option value="12:00-12:30" id="h9">12:00-12:30</option>
+                                    <option value="almuerzo" disabled=""  >Hora de almuerzo</option>
+                                    <option value="15:00-15:30" id="h10">15:00-15:30</option>
+                                    <option value="15:30-16:00" id="h11">15:30-16:00</option>
+                                    <option value="16:00-16:30" id="h12">16:00-16:30</option>
+                                    <option value="16:30-17:00" id="h13">16:30-17:00</option>
+                                    <option value="16:00-16:30" id="h14">17:00-17:30</option>
+                                    <option value="16:30-17:00" id="h15">17:30-18:00</option>
+                                    <option value="16:00-16:30" id="h16">18:00-18:30</option>
+                                </select>
+                            </div>
+                            <input id="valor" type="hidden" value="false" name="valor">
+                            <div class="alert alert-info" role="alert">
+                                Estimado(a)
+                                <%= persona.nombre %>, una vez agendada tu cita no podras modificar los datos de la misma
+                            </div>
+                            <div class="modal-footer">
+                                <a type="button" id="genCit" class="btn btn-primary" href="/">Cancelar</a>
+                                <button type="submit" class="btn btn-success">Guardar</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

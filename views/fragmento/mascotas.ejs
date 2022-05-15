@@ -1,0 +1,181 @@
+<script>
+    $(document).ready(function() {
+        validarMascota();
+    });
+</script>
+<section>
+    <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Registro Mascota
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+                </div>
+                <form id="registroMascota" method="POST" action="/registroMascotas">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nombre">Nombre(*)</label>
+                            <input type="text" class="form-control" id="nombre" aria-describedby="nombreHelp" name="nombre" placeholder="Ingrese el nombre de su Mascota">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="edad">Edad(*)</label>
+                            <input type="number" class="form-control" id="edad" aria-describedby="edadHelp" name="edad" placeholder="Ingrese la edad de su Mascota">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="edad">Sexo</label>
+                            <div class="btn-group" style="padding-bottom: 10px">
+                                <select class="form-control" name="sexo" id="sexo" aria-describedby="espeHelp">
+                            <option value="hembra">Hembra</option>
+                            <option value="macho">Macho</option>
+                        </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="especie">Especie(*)</label>
+                            <input type="text" class="form-control" id="especie" aria-describedby="expecieHelp" name="especie" placeholder="Ejemplo: 'perro', 'gato'">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="raza">Raza(*)</label>
+                            <input type="text" class="form-control" id="raza" aria-describedby="razaHelp" name="raza" placeholder="Ingrese la Raza de su mascota">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="modal fade" id="modalRegistroMascota" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Modificar Datos de Mascota
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+                </div>
+                <form id="ActualizaMascota" method="POST" action="/actualizaMascota">
+                    <input type="hidden" id="externalMascota" name="externalMascota">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nombre">Nombre(*)</label>
+                            <input type="text" class="form-control" id="nombreActualizas" aria-describedby="nombreHelp" name="nombreActualizas" placeholder="Ingrese el nombre de su Mascota">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="edad">Edad(*)</label>
+                            <input type="number" class="form-control" id="edadActualizar" aria-describedby="edadHelp" name="edadActualizar" placeholder="Ingrese la edad de su Mascota">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="edad">Sexo</label>
+                            <div class="btn-group" style="padding-bottom: 10px">
+                                <select class="form-control" name="sexoActualizar" id="sexoActualizar" aria-describedby="espeHelp">
+                            <option value="hembra">Hembra</option>
+                            <option value="macho">Macho</option>
+                        </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="especie">Especie(*)</label>
+                            <input type="text" class="form-control" id="especieActualizar" aria-describedby="expecieHelp" name="especieActualizar" placeholder="Ejemplo: 'perro', 'gato'">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="raza">Raza(*)</label>
+                            <input type="text" class="form-control" id="razaActualizar" aria-describedby="razaHelp" name="razaActualizar" placeholder="Ingrese la Raza de su mascota">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="site-section bg-light block-13" id="testimonials-section" data-aos="fade">
+    <div class="container">
+
+        <div class="card">
+            <div class="card-header bg-succses">
+                Listado Mascotas
+                <a href="" data-toggle="modal" class=" btn btn-outline-primary ml-auto float-rigth" title="agregar mascota" data-target="#modalRegistro">Nuevo <i class="fas fa-paw"></i></a>
+            </div>
+            <div class="card-body">
+            </div>
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table id="tablaLCitaV" class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Nro</th>
+                                <th>Nombre</th>
+                                <th>Nro. Historia</th>
+                                <th>Especie</th>
+                                <th>Sexo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% lista.forEach(function(item, index){%>
+                                <tr>
+                                    <td>
+                                        <%= (index + 1)%>
+                                    </td>
+                                    <td>
+                                        <%= item.nombre%>
+                                    </td>
+                                    <td>
+                                        <%= item.nro_historia%>
+                                    </td>
+                                    <td>
+                                        <%= item.especie%>
+                                    </td>
+                                    <td>
+                                        <%= item.sexo%>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" data-toggle="modal" data-target="#modalRegistroMascota" data-tooltip="tooltip" data-placement="top" title="Editar" class="btn-danger btn-sm" onclick="llenaDatosMascota('<%= item.external_id %>')"><i class="fa fa-edit"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <%})%>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

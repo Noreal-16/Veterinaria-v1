@@ -1,0 +1,35 @@
+<script>
+    $(document).ready(function() {
+        validacionInicio();
+    });
+</script>
+<br>
+<br>
+<br>
+<section class="ftco-section ftco-no-pt ftco-no-pb ">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <span class="appointment-heading">Inicio Sesion</span>
+                <form id="formularioInicio" method="POST" action="/inicio">
+                    <div class="form-group">
+                        <label for="correo">Correo(*)</label>
+                        <input type="email" class="form-control" id="correo" aria-describedby="correoHelp" placeholder="Ingrese su correo" name="correo">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasenia">Contrasenia(*)</label>
+                        <input type="password" class="form-control" id="clave" placeholder="Contrasenia" name="clave">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success py-3 px-4">ingresar</button>
+                        <a href="/" class="btn btn-primary py-3 px-4">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
